@@ -5,6 +5,7 @@ import Sidebar from './sidebar'
 import TopBar from './topbar'
 import CommandPalette from './command-palette'
 import FloatingAssistant from './floating-assistant'
+import LaunchAnimation from './launch-animation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 
@@ -21,31 +22,35 @@ const titles = {
 
 export default function AppShell({ children }) {
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const [launched, setLaunched] = useState(false)
   const pathname = usePathname() || '/'
   const title = titles[pathname] || (Object.keys(titles).find((k) => pathname.startsWith(k) && k !== '/') ? titles[Object.keys(titles).find((k) => pathname.startsWith(k) && k !== '/')] : 'Thien')
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
-      <Sidebar />
-      <div className="flex-1 min-w-0 flex flex-col">
-        <TopBar onOpenPalette={() => setPaletteOpen(true)} title={title} />
-        <main className="flex-1 min-w-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </div>
+    <>
+      <LaunchAnimation onFinish={() => setLaunched(true)} />
+      <div className={`flex min-h-screen bg-background text-foreground transition-opacity duration-500 ${launched ? 'opacity-100' : 'opacity-0'}`}>
+        <Sidebar />
+        <div className="flex-1 min-w-0 flex flex-col">
+          <TopBar onOpenPalette={() => setPaletteOpen(true)} title={title} />
+          <main className="flex-1 min-w-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={pathname}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
+          </main>
+        </div>
 
-      <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
-      <FloatingAssistant />
-    </div>
+        <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
+        <FloatingAssistant />
+      </div>
+    </>
   )
 }
