@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, ArrowUp, Paperclip, Image as ImageIcon, Mic, ChevronDown, Copy, RefreshCw, ThumbsUp, ThumbsDown } from 'lucide-react'
+import { ArrowUp, Paperclip, Image as ImageIcon, Mic, ChevronDown, Copy, RefreshCw, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react'
 import { models } from '@/components/thien/mock-data'
 
 const hour = new Date().getHours()
@@ -61,9 +62,9 @@ export default function HomePage() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.05, type: 'spring', stiffness: 260, damping: 20 }}
-                  className="mx-auto h-12 w-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/25 ring-1 ring-white/10 flex items-center justify-center mb-6"
+                  className="mx-auto h-14 w-14 rounded-2xl overflow-hidden ring-1 ring-white/10 bg-black shadow-lg shadow-black/40 flex items-center justify-center mb-6"
                 >
-                  <Sparkles className="h-5 w-5 text-white" strokeWidth={2.25} />
+                  <Image src="/thien-icon.png" alt="Thien" width={56} height={56} priority className="h-full w-full object-cover" />
                 </motion.div>
                 <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-balance">
                   {greeting}, <span className="text-muted-foreground">Thien.</span>
@@ -117,7 +118,7 @@ export default function HomePage() {
                 if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send() }
               }}
               rows={started ? 2 : 3}
-              placeholder="Message Thien\u2026"
+              placeholder="Message Thien…"
               className="w-full bg-transparent outline-none resize-none px-4 pt-3.5 text-[15px] placeholder:text-muted-foreground"
             />
             <div className="flex items-center justify-between px-2 pb-2">

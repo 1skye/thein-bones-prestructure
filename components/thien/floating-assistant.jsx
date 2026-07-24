@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Sparkles, X, ArrowUp, Mic } from 'lucide-react'
+import { X, ArrowUp, Mic } from 'lucide-react'
 
 export default function FloatingAssistant() {
   const [open, setOpen] = useState(false)
@@ -15,21 +16,20 @@ export default function FloatingAssistant() {
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.96 }}
-        className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-500/30 ring-1 ring-white/10 flex items-center justify-center text-white"
+        className="fixed bottom-6 right-6 z-40 h-12 w-12 rounded-full overflow-hidden bg-black shadow-lg shadow-black/50 ring-1 ring-white/15 flex items-center justify-center"
         aria-label="Open assistant"
       >
         <AnimatePresence mode="wait">
           {open ? (
-            <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+            <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} className="text-white">
               <X className="h-5 w-5" />
             </motion.div>
           ) : (
-            <motion.div key="s" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
-              <Sparkles className="h-5 w-5" strokeWidth={2.25} />
+            <motion.div key="s" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} className="h-full w-full">
+              <Image src="/thien-icon.png" alt="Thien" width={48} height={48} className="h-full w-full object-cover" />
             </motion.div>
           )}
         </AnimatePresence>
-        <span className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
       </motion.button>
 
       {/* Mini chat window */}
@@ -44,8 +44,8 @@ export default function FloatingAssistant() {
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-border/60">
               <div className="flex items-center gap-2">
-                <div className="h-6 w-6 rounded-md bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                  <Sparkles className="h-3 w-3 text-white" />
+                <div className="h-6 w-6 rounded-md overflow-hidden ring-1 ring-white/10 bg-black">
+                  <Image src="/thien-icon.png" alt="Thien" width={24} height={24} className="h-full w-full object-cover" />
                 </div>
                 <div className="leading-tight">
                   <div className="text-sm font-medium">Thien</div>

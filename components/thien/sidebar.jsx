@@ -1,16 +1,16 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { nav } from './mock-data'
-import { Sparkles, ChevronsUpDown, CircleDot } from 'lucide-react'
+import { ChevronsUpDown, CircleDot } from 'lucide-react'
 
 const Logo = () => (
-  <div className="flex items-center gap-2 px-3 py-4">
-    <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/20">
-      <Sparkles className="h-4 w-4 text-white" strokeWidth={2.5} />
-      <span className="absolute inset-0 rounded-lg ring-1 ring-inset ring-white/20" />
+  <div className="flex items-center gap-2.5 px-3 py-4">
+    <div className="relative h-8 w-8 rounded-lg overflow-hidden ring-1 ring-white/10 bg-black">
+      <Image src="/thien-icon.png" alt="Thien" width={32} height={32} priority className="h-full w-full object-cover" />
     </div>
     <div className="flex flex-col leading-tight">
       <span className="text-sm font-semibold tracking-tight text-foreground">Thien</span>
