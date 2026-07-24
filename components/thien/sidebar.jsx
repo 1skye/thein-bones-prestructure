@@ -35,11 +35,11 @@ export default function Sidebar() {
           const active = item.href === '/' ? pathname === '/' : pathname?.startsWith(item.href)
           const Icon = item.icon
           return (
-            <Link key={item.key} href={item.href} className="relative block">
+            <Link key={item.key} href={item.href} className="block">
               <motion.div
                 whileHover={{ x: 2 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                className={`group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                   active
                     ? 'bg-white/5 text-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-white/[0.03]'
@@ -48,7 +48,7 @@ export default function Sidebar() {
                 {active && (
                   <motion.span
                     layoutId="sidebar-active"
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-[2px] rounded-r-full bg-blue-500"
+                    className="absolute left-1 top-1.5 bottom-1.5 w-[3px] rounded-full bg-blue-500"
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
                 )}
