@@ -18,20 +18,7 @@ export default function TopBar({ onOpenPalette, title }) {
           </div>
         )}
 
-        <div className="flex-1 max-w-xl mx-auto">
-          <motion.button
-            whileHover={{ y: -1 }}
-            onClick={onOpenPalette}
-            className="group w-full flex items-center gap-2.5 h-9 px-3 rounded-lg border border-border/70 bg-card/60 hover:bg-card/90 hover:border-border transition-all"
-          >
-            <Search className="h-4 w-4 text-muted-foreground" />
-            <span className="text-sm text-muted-foreground">Search anything — memories, files, chats…</span>
-            <span className="ml-auto hidden sm:flex items-center gap-1 text-[10px] text-muted-foreground/80">
-              <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-border/60 font-mono">⌘</kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-border/60 font-mono">K</kbd>
-            </span>
-          </motion.button>
-        </div>
+        <div className="flex-1" />
 
         <div className="flex items-center gap-1.5">
           <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
