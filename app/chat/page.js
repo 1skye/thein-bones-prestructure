@@ -151,7 +151,7 @@ export default function ChatPage() {
                 </button>
               </div>
             </div>
-            <div className="mt-2 text-center text-[10px] text-muted-foreground">Thien can make mistakes. Verify important information.</div>
+            <div className="mt-2 flex flex-wrap gap-1.5 mb-0" style={{display:'none'}} />
           </div>
         </div>
       </div>

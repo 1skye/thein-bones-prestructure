@@ -140,7 +140,6 @@ export default function HomePage() {
               </button>
             </div>
           </div>
-          <div className="mt-2 text-center text-[10px] text-muted-foreground">Thien can make mistakes. Verify important information.</div>
         </div>
       </motion.div>
     </div>
