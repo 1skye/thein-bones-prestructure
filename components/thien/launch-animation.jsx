@@ -75,7 +75,7 @@ export default function LaunchAnimation({ onFinish }) {
             onCanPlay={() => setReady(true)}
             onEnded={finish}
             onError={finish}
-            className={`max-h-screen max-w-screen h-full w-full object-contain transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}
+            className={`h-[220px] w-[220px] md:h-[260px] md:w-[260px] object-contain transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}
           />
         </motion.div>
       )}

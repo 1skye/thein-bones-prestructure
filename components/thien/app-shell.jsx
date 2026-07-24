@@ -29,7 +29,7 @@ export default function AppShell({ children }) {
   return (
     <>
       <LaunchAnimation onFinish={() => setLaunched(true)} />
-      <div className={`flex min-h-screen bg-background text-foreground transition-opacity duration-500 ${launched ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`flex min-h-screen bg-background text-foreground transition-opacity duration-500 ${launched ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <Sidebar />
         <div className="flex-1 min-w-0 flex flex-col">
           <TopBar onOpenPalette={() => setPaletteOpen(true)} title={title} />
