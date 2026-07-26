@@ -83,9 +83,6 @@ export default function HomePage() {
               {messages.map((m, i) => <Message key={i} m={m} />)}
               {typing && (
                 <div className="flex gap-3 items-start">
-                  <div className="h-7 w-7 rounded-md bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0">
-                    <Sparkles className="h-3.5 w-3.5 text-white" />
-                  </div>
                   <div className="rounded-2xl rounded-tl-sm bg-white/[0.04] px-4 py-3 border border-border/40">
                     <div className="flex items-center gap-1">
                       <span className="typing-dot h-1.5 w-1.5 rounded-full bg-muted-foreground" />
@@ -153,13 +150,9 @@ function Message({ m }) {
       initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}
       className={`flex gap-3 items-start ${isUser ? 'justify-end' : ''}`}
     >
-      {!isUser && (
-        <div className="h-7 w-7 rounded-md bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shrink-0">
-          <Sparkles className="h-3.5 w-3.5 text-white" />
-        </div>
-      )}
+
       <div className={`max-w-[80%] ${isUser ? 'order-1' : ''}`}>
-        <div className={`rounded-2xl px-4 py-3 text-[14.5px] leading-relaxed ${isUser ? 'bg-blue-500 text-white rounded-tr-sm' : 'bg-white/[0.04] border border-border/40 rounded-tl-sm'}`}>
+        <div className={`rounded-2xl px-4 py-3 text-[14.5px] leading-relaxed ${isUser ? 'text-white' : 'bg-white/[0.04] border border-border/40 rounded-tl-sm'}`}>
           <div className="whitespace-pre-wrap">{m.content}</div>
         </div>
         {!isUser && (
@@ -171,9 +164,7 @@ function Message({ m }) {
           </div>
         )}
       </div>
-      {isUser && (
-        <div className="h-7 w-7 rounded-md bg-neutral-800 ring-1 ring-white/10 flex items-center justify-center shrink-0 text-[11px] font-semibold">TH</div>
-      )}
+
     </motion.div>
   )
 }
